@@ -3,7 +3,7 @@
 #include "Haxxor/Core/Common.h"
 
 namespace Haxxor {
-    class VertexBuffer {
+    class HXAPI VertexBuffer {
     public:
         virtual ~VertexBuffer() {}
 

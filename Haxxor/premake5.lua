@@ -6,6 +6,11 @@ project "Haxxor"
 	targetdir "%{wks.location}/build/bin"
 	objdir "%{wks.location}/build/bin-int/%{prj.name}"
 
+	defines {
+		"HX_BUILD_SHAREDLIB",
+		"HX_EXPORT",
+	}
+
 	includedirs {
 		"%{prj.location}/src",
 		"%{prj.location}/src/Haxxor",

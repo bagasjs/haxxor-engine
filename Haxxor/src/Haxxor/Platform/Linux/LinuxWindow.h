@@ -6,7 +6,7 @@
 struct GLFWwindow;
 
 namespace Haxxor {
-    class LinuxWindow : public Window {
+    class HXAPI LinuxWindow : public Window {
     public:
         LinuxWindow(const std::string& name, uint32_t width, uint32_t height);
 
