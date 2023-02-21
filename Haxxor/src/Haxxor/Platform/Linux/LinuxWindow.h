@@ -13,7 +13,8 @@ namespace Haxxor {
         virtual ~LinuxWindow();
         
         void SwapBuffers() override;
-        void PollEvent() override;
+        void PollEvents() override;
+        bool ShouldClose() override;
         
         inline GLFWwindow* GetNativeWindow() const { return m_Window; }
     private:

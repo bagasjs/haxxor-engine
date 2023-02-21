@@ -6,16 +6,19 @@
 namespace Haxxor {
     class HXAPI Application {
     public:
-        Application();
-        ~Application();
+        virtual ~Application() {};
 
         void Run();
     
     protected:
-        virtual void Update() = 0;
-        virtual void Setup() = 0;
-        virtual void Clean() = 0;
+        virtual void Update() {};
+        virtual void Setup() {};
+        virtual void Clean() {};
     protected:
+        uint32_t m_WindowWidth = 1280;
+        uint32_t m_WindowHeight = 720;
+        std::string m_WindowName = "Haxxor Engine";
+    private:
         Ref<Window> m_Window;
     };
 }

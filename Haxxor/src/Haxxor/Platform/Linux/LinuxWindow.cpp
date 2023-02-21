@@ -21,7 +21,8 @@ namespace Haxxor {
         }
     }
 
-    LinuxWindow::LinuxWindow(const std::string& name, uint32_t width, uint32_t height) {
+    LinuxWindow::LinuxWindow(const std::string& name, uint32_t width, uint32_t height) 
+    {
         m_Data.Name = name;
         m_Data.Width = width;
         m_Data.Height = height;
@@ -34,6 +35,9 @@ namespace Haxxor {
 
         m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Name.c_str(), nullptr, nullptr);
         ++s_GLFWWindowCount;
+
+        // TODO: remove this into graphic context class
+        glfwMakeContextCurrent(m_Window);
     }
 
     void LinuxWindow::SwapBuffers() 
@@ -41,8 +45,13 @@ namespace Haxxor {
         glfwSwapBuffers(m_Window);
     }
 
-    void LinuxWindow::PollEvent() 
+    void LinuxWindow::PollEvents() 
     {
         glfwPollEvents();
+    }
+
+    bool LinuxWindow::ShouldClose()
+    {
+        return glfwWindowShouldClose(m_Window);
     }
 }
