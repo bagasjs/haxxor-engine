@@ -10,8 +10,9 @@ namespace Haxxor {
         virtual void Enable() = 0;
         virtual void Disable() = 0;
         virtual uint32_t GetRendererID() = 0;
+        virtual void SetData(uint32_t count, float* data);
 
     public:
-        static Ref<VertexBuffer> Create();
+        static Ref<VertexBuffer> Create(uint32_t count, float* data);
     };
 }
