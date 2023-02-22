@@ -16,7 +16,7 @@ namespace Haxxor {
         void PollEvents() override;
         bool ShouldClose() override;
         
-        inline GLFWwindow* GetNativeWindow() const { return m_Window; }
+        void* GetNativeHandle() override;
     private:
         GLFWwindow* m_Window;
         struct WindowData {

@@ -54,4 +54,9 @@ namespace Haxxor {
     {
         return glfwWindowShouldClose(m_Window);
     }
+
+    void* LinuxWindow::GetNativeHandle()
+    {
+        return (void*) m_Window;
+    }
 }

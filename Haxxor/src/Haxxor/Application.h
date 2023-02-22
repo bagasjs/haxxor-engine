@@ -2,6 +2,7 @@
 
 #include "Haxxor/Core/Common.h"
 #include "Haxxor/Core/Window.h"
+#include "Haxxor/Renderer/Renderer.h"
 
 namespace Haxxor {
     class HXAPI Application {
@@ -20,5 +21,6 @@ namespace Haxxor {
         std::string m_WindowName = "Haxxor Engine";
     private:
         Ref<Window> m_Window;
+        Ref<Renderer> m_Renderer;
     };
 }

@@ -7,6 +7,14 @@
     #define HX_STATIC_ASSERT static_assert
 #endif
 
+#ifdef _MSC_VER
+    #include <intrin.h>
+    #define DEBUG_BREAK() __debugbreak()
+#else
+    #define DEBUG_BREAK() __builtin_trap()
+#endif
+
+
 // Platform detection
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
     #define HX_PLATFORM_WINDOWS 1
