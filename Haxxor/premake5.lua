@@ -18,7 +18,8 @@ project "Haxxor"
 		"%{prj.location}/vendors/glfw/include/GLFW",
 		"%{prj.location}/vendors/glad/include",
 		"%{prj.location}/vendors/glad/include/glad",
-		"%{prj.location}/vendors/glad/include/KHR"		
+		"%{prj.location}/vendors/glad/include/KHR",
+		"%{prj.location}/vendors/glm"
 	}
 
 	files {
