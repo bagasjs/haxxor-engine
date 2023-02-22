@@ -1,3 +1,6 @@
 [submodule "Haxxor/vendors/glfw"]
 	path = Haxxor/vendors/glfw
 	url = https://github.com/thankz4lot/glfw.git
+[submodule "Haxxor/vendors/glm"]
+	path = Haxxor/vendors/glm
+	url = https://github.com/thankz4lot/glm.git

@@ -1,17 +1,19 @@
 #pragma once
 
 #include "Haxxor/Core/Common.h"
-#include "Haxxor/Renderer/VertexBuffer.h"
+#include "Haxxor/Renderer/Shader.h"
 
 namespace Haxxor {
-    class HXAPI OpenGLVertexBuffer : public VertexBuffer {
+    class HXAPI OpenGLShader : public Shader {
     public:
-        OpenGLVertexBuffer(uint32_t count, float* data);
-        virtual ~OpenGLVertexBuffer();
+        OpenGLShader();
+        virtual ~OpenGLShader();
+
         void Enable();
         void Disable();
-        void SetData(uint32_t count, float* data);
         inline uint32_t GetRendererID() const { return m_RendererID; }
+        void SetUniform(ShaderDataType type, const std::string& name, const void* data);
+
     private:
         uint32_t m_RendererID;
     };

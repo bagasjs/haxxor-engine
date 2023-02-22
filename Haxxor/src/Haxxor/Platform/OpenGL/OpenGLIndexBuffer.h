@@ -4,7 +4,7 @@
 #include "Haxxor/Renderer/IndexBuffer.h"
 
 namespace Haxxor {
-    class HXAPI OpenGLIndexBuffer {
+    class HXAPI OpenGLIndexBuffer : public IndexBuffer {
     public:
         OpenGLIndexBuffer(uint32_t count, uint32_t* data);
         virtual ~OpenGLIndexBuffer();

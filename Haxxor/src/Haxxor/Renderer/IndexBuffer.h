@@ -5,11 +5,11 @@
 namespace Haxxor {
     class HXAPI IndexBuffer {
     public:
-        virtual ~IndexBuffer() {}
+        virtual ~IndexBuffer() = default;
 
         virtual void Enable() = 0;
         virtual void Disable() = 0;
-        virtual uint32_t GetRendererID() = 0;
+        virtual uint32_t GetRendererID() const = 0;
         virtual void SetData(uint32_t count, uint32_t* data) = 0;
 
     public:

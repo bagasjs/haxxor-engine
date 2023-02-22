@@ -6,9 +6,9 @@ namespace Haxxor {
 
     Ref<Renderer> Renderer::Create(const Ref<Window>& window)
     {
-        switch (s_API)
+        switch (Renderer::GetAPI())
         {
-            case Renderer::API::NONE: return nullptr; // TODO: assertion or log
+            case Renderer::API::NONE: return nullptr; // TODO: error handling
             case Renderer::API::OPENGL: return MakeRef<OpenGLRenderer>(window);
         }
         return nullptr;
