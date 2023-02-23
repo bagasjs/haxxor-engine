@@ -1,9 +1,9 @@
 #include "Window.h"
 
 #if defined(HX_PLATFORM_WINDOWS)
-    #include "Haxxor/Platform/Windows/WindowsWindow.h"
+    #include "Haxxor/Backend/Windows/WindowsWindow.h"
 #elif defined(HX_PLATFORM_LINUX)
-    #include "Haxxor/Platform/Linux/LinuxWindow.h"
+    #include "Haxxor/Backend/Linux/LinuxWindow.h"
 #else
     #error "Unsupported platform"
 #endif

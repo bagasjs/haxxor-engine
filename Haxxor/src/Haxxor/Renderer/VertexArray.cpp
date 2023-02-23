@@ -1,12 +1,14 @@
 #include "VertexArray.h"
-#include "Renderer.h"
-#include "Haxxor/Platform/OpenGL/OpenGLVertexArray.h"
+#include "RendererAPI.h"
+#include "Haxxor/Backend/OpenGL/OpenGLVertexArray.h"
 
 namespace Haxxor {
-    Ref<VertexArray> VertexArray::Create() {
-        switch(Renderer::GetAPI()) {
-            case Renderer::API::NONE: return nullptr;
-            case Renderer::API::OPENGL: return MakeRef<OpenGLVertexArray>();
+    Ref<VertexArray> VertexArray::Create() 
+    {
+        switch(RendererAPI::GetAPIKind()) 
+        {
+            case RendererAPI::Kind::NONE: return nullptr;
+            case RendererAPI::Kind::OPENGL: return MakeRef<OpenGLVertexArray>();
         }
         return nullptr;
     }

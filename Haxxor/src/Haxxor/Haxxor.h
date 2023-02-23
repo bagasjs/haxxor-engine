@@ -3,6 +3,7 @@
 #include "Haxxor/Core/Common.h"
 #include "Haxxor/Core/Window.h"
 
+#include "Haxxor/Renderer/RendererAPI.h"
 #include "Haxxor/Renderer/Shader.h"
 #include "Haxxor/Renderer/VertexBuffer.h"
 #include "Haxxor/Renderer/IndexBuffer.h"

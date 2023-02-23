@@ -1,4 +1,5 @@
 #include "LinuxWindow.h"
+#include "Haxxor/Renderer/RendererAPI.h"
 
 #include <GLFW/glfw3.h>
 
@@ -31,6 +32,14 @@ namespace Haxxor {
             // TODO: add error checking or assertion
             glfwInit();
             glfwSetErrorCallback(GLFWErrorCallback);
+        }
+
+        if(RendererAPI::GetAPIKind() == RendererAPI::Kind::OPENGL)
+        {
+            glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         }
 
         m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Name.c_str(), nullptr, nullptr);

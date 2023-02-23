@@ -1,14 +1,14 @@
 #include "IndexBuffer.h"
-#include "Renderer.h"
+#include "RendererAPI.h"
 
-#include "Haxxor/Platform/OpenGL/OpenGLIndexBuffer.h"
+#include "Haxxor/Backend/OpenGL/OpenGLIndexBuffer.h"
 
 namespace Haxxor {
     Ref<IndexBuffer> IndexBuffer::Create(uint32_t count, uint32_t* data) {
-        switch(Renderer::GetAPI()) {
-            case Renderer::API::NONE: return nullptr; // TODO: Error handling
-            case Renderer::API::OPENGL: return MakeRef<OpenGLIndexBuffer>(count, data);
+        switch(RendererAPI::GetAPIKind()) {
+            case RendererAPI::Kind::NONE: return nullptr; // TODO: Error handling
+            case RendererAPI::Kind::OPENGL: return MakeRef<OpenGLIndexBuffer>(count, data);
         }
-        return nullptr;
+        return nullptr; // TODO: error handling
     }
 }
