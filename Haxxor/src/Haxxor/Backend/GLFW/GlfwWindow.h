@@ -6,11 +6,11 @@
 struct GLFWwindow;
 
 namespace Haxxor {
-    class HXAPI LinuxWindow : public Window {
+    class HXAPI GlfwWindow : public Window {
     public:
-        LinuxWindow(const std::string& name, uint32_t width, uint32_t height);
+        GlfwWindow(const std::string& name, uint32_t width, uint32_t height);
 
-        virtual ~LinuxWindow();
+        virtual ~GlfwWindow();
         
         void SwapBuffers() override;
         void PollEvents() override;

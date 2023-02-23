@@ -1,4 +1,5 @@
-#include "LinuxWindow.h"
+#include "GlfwWindow.h"
+
 #include "Haxxor/Renderer/RendererAPI.h"
 
 #include <GLFW/glfw3.h>
@@ -9,12 +10,14 @@
 namespace Haxxor {
     static int s_GLFWWindowCount = 0;
 
-    static void GLFWErrorCallback(int error, const char* description) {
+    static void GLFWErrorCallback(int error, const char* description) 
+    {
         // TODO: change into Console::Error
         printf("GLFW Error (%i): %s", error, description);
     }
 
-    LinuxWindow::~LinuxWindow() {
+    GlfwWindow::~GlfwWindow() 
+    {
         glfwDestroyWindow(m_Window);
         --s_GLFWWindowCount;
         if(s_GLFWWindowCount == 0) {
@@ -22,7 +25,7 @@ namespace Haxxor {
         }
     }
 
-    LinuxWindow::LinuxWindow(const std::string& name, uint32_t width, uint32_t height) 
+    GlfwWindow::GlfwWindow(const std::string& name, uint32_t width, uint32_t height) 
     {
         m_Data.Name = name;
         m_Data.Width = width;
@@ -49,22 +52,22 @@ namespace Haxxor {
         glfwMakeContextCurrent(m_Window);
     }
 
-    void LinuxWindow::SwapBuffers() 
+    void GlfwWindow::SwapBuffers() 
     {
         glfwSwapBuffers(m_Window);
     }
 
-    void LinuxWindow::PollEvents() 
+    void GlfwWindow::PollEvents() 
     {
         glfwPollEvents();
     }
 
-    bool LinuxWindow::ShouldClose()
+    bool GlfwWindow::ShouldClose()
     {
         return glfwWindowShouldClose(m_Window);
     }
 
-    void* LinuxWindow::GetNativeHandle()
+    void* GlfwWindow::GetNativeHandle()
     {
         return (void*) m_Window;
     }
