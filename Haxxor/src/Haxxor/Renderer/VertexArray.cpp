@@ -1,6 +1,7 @@
 #include "VertexArray.h"
 #include "RendererAPI.h"
 #include "Haxxor/Core/Logging.h"
+
 #include "Haxxor/Backend/OpenGL/OpenGLVertexArray.h"
 
 namespace Haxxor {

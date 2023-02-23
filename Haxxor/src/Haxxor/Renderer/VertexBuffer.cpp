@@ -1,6 +1,7 @@
 #include "VertexBuffer.h"
 #include "RendererAPI.h"
 #include "Haxxor/Core/Logging.h"
+
 #include "Haxxor/Backend/OpenGL/OpenGLVertexBuffer.h"
 
 namespace Haxxor {

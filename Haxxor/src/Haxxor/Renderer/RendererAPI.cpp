@@ -1,5 +1,6 @@
 #include "RendererAPI.h"
 #include "Haxxor/Core/Logging.h"
+
 #include "Haxxor/Backend/OpenGL/OpenGLRendererAPI.h"
 
 namespace Haxxor

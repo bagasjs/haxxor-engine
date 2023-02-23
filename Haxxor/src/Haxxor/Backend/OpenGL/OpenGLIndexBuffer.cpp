@@ -4,7 +4,7 @@
 
 namespace Haxxor {
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t count, uint32_t* data) 
-        : m_RendererID(0)
+        : m_RendererID(0), m_Count(count)
     {
         glGenBuffers(1, &m_RendererID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -32,5 +32,6 @@ namespace Haxxor {
     {
         Enable();
         glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * count, data);
+        m_Count = count;
     }
 }

@@ -57,7 +57,9 @@
 
 #include <stdint.h>
 #include <memory>
+#include <vector>
 #include <string>
+#include <unordered_map>
 
 namespace Haxxor {
     template<typename T>

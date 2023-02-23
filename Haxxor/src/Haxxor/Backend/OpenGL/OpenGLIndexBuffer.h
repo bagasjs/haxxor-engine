@@ -3,8 +3,10 @@
 #include "Haxxor/Core/Common.h"
 #include "Haxxor/Renderer/IndexBuffer.h"
 
-namespace Haxxor {
-    class HXAPI OpenGLIndexBuffer : public IndexBuffer {
+namespace Haxxor 
+{
+    class HXAPI OpenGLIndexBuffer : public IndexBuffer 
+    {
     public:
         OpenGLIndexBuffer(uint32_t count, uint32_t* data);
         virtual ~OpenGLIndexBuffer();
@@ -12,7 +14,9 @@ namespace Haxxor {
         void Disable();
         inline uint32_t GetRendererID() const { return m_RendererID; };
         void SetData(uint32_t count, uint32_t* data);
+        inline uint32_t GetCount() const { return m_Count; }
     private:
         uint32_t m_RendererID;
+        uint32_t m_Count;
     };
 }

@@ -1,6 +1,7 @@
 #include "IndexBuffer.h"
 #include "RendererAPI.h"
 #include "Haxxor/Core/Logging.h"
+
 #include "Haxxor/Backend/OpenGL/OpenGLIndexBuffer.h"
 
 namespace Haxxor {

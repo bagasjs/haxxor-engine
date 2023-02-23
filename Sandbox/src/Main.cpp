@@ -17,6 +17,10 @@ public:
         m_VAO = VertexArray::Create();
         m_VAO->Enable();
 
+        std::string vsrc = LoadFileContent("res/basic.vert");
+        std::string fsrc = LoadFileContent("res/basic.frag");
+        m_Shader = Shader::Create(vsrc, fsrc);
+
         float vertices[] = {
             -0.5f, -0.5f,
              0.5f, -0.5f,
@@ -45,6 +49,7 @@ private:
     Ref<VertexArray> m_VAO;
     Ref<VertexBuffer> m_VBO;
     Ref<IndexBuffer> m_IBO;
+    Ref<Shader> m_Shader;
 };
 
 int main(int argc, char** argv) {
