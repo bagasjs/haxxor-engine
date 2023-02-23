@@ -11,7 +11,7 @@ namespace Haxxor
     {
         switch(RendererAPI::Get())
         {
-            case RendererAPI::Kind::OPENGL: MakeRef<OpenGLShader>(vertSource, fragSource);
+            case RendererAPI::Kind::OPENGL: return MakeRef<OpenGLShader>(vertSource, fragSource);
         }
         HX_LOG_ERROR("%s", "Broken \"Shader\" creation due to invalid renderer api kind.");
         return nullptr;

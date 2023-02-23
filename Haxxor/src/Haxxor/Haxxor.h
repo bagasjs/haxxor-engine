@@ -2,6 +2,7 @@
 
 #include "Haxxor/Core/Common.h"
 #include "Haxxor/Core/Window.h"
+#include "Haxxor/Core/Logging.h"
 
 #include "Haxxor/Renderer/RendererAPI.h"
 #include "Haxxor/Renderer/Shader.h"

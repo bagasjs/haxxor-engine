@@ -1,6 +1,7 @@
 #include "OpenGLRendererAPI.h"
 
 #include <glad/glad.h>
+#include "Haxxor/Core/Logging.h"
 
 namespace Haxxor
 {
