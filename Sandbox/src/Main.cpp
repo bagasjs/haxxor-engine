@@ -18,9 +18,9 @@ public:
         m_VAO = VertexArray::Create();
         m_VAO->Enable();
 
-        std::string vsrc = LoadFileContent("res/shaders/basic.vert");
-        std::string fsrc = LoadFileContent("res/shaders/basic.frag");
-        m_Shader = Shader::Create(vsrc, fsrc);
+        std::string vertsrc = LoadFileContent("res/shaders/basic.vert");
+        std::string fragsrc = LoadFileContent("res/shaders/basic.frag");
+        m_Shader = Shader::Create(vertsrc, fragsrc);
 
         float vertices[] = {
             -0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,

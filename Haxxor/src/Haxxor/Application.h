@@ -19,7 +19,7 @@ namespace Haxxor {
     protected:
         uint32_t m_WindowWidth = 1280;
         uint32_t m_WindowHeight = 720;
-        std::string m_WindowName = "Haxxor Engine";
+        std::string m_WindowName = "Haxxor Application";
 
     private:
         Ref<Window> m_Window;
