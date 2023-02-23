@@ -1,5 +1,5 @@
 #include "RendererAPI.h"
-
+#include "Haxxor/Core/Logging.h"
 #include "Haxxor/Backend/OpenGL/OpenGLRendererAPI.h"
 
 namespace Haxxor
@@ -9,12 +9,12 @@ namespace Haxxor
 
     Ref<RendererAPI> RendererAPI::Create()
     {
-        switch(RendererAPI::GetAPIKind())
+        switch(RendererAPI::Get())
         {
-            case RendererAPI::Kind::NONE: return nullptr; // TODO: error handling
             case RendererAPI::Kind::OPENGL: return MakeRef<OpenGLRendererAPI>();
         }
-        return nullptr; // TODO: error handling
+        HX_LOG_ERROR("%s", "Broken \"RendererAPI\" creation due to invalid renderer api kind.");
+        return nullptr;
     }
 
     void RendererAPI::Init()

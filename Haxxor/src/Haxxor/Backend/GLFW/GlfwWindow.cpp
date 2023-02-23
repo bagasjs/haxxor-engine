@@ -37,7 +37,7 @@ namespace Haxxor {
             glfwSetErrorCallback(GLFWErrorCallback);
         }
 
-        if(RendererAPI::GetAPIKind() == RendererAPI::Kind::OPENGL)
+        if(RendererAPI::Get() == RendererAPI::Kind::OPENGL)
         {
             glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);

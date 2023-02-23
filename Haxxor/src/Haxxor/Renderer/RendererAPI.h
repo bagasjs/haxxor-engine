@@ -25,7 +25,7 @@ namespace Haxxor {
 		static void DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount);
 		static void SetLineWidth(float width);
 
-        inline static Kind GetAPIKind() { return s_APIKind; }
+        inline static Kind Get() { return s_APIKind; }
         inline static void Set(Kind api) { s_APIKind = api; }
 
     protected:
