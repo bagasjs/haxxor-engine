@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include "Haxxor/Core/Logging.h"
 #include "Haxxor/Renderer/Shader.h"
+#include "Haxxor/Renderer/RendererAPI.h"
 
 namespace Haxxor {
 
@@ -27,7 +28,7 @@ namespace Haxxor {
     }
 
     OpenGLVertexArray::OpenGLVertexArray()
-        : m_RendererID(0)
+        : m_RendererID(0), m_VertexBufferIndex(0)
     {
         glGenVertexArrays(1, &m_RendererID);
     }
@@ -110,7 +111,6 @@ namespace Haxxor {
                 
             }
         }
-
         m_VertexBuffers.push_back(vbo);
     }
 

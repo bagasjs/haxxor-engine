@@ -24,6 +24,7 @@ namespace Haxxor {
 		static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount);
 		static void DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount);
 		static void SetLineWidth(float width);
+        static void LogError();
 
         inline static Kind Get() { return s_APIKind; }
         inline static void Set(Kind api) { s_APIKind = api; }
@@ -35,6 +36,7 @@ namespace Haxxor {
 		virtual void Impl_DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount) = 0;
 		virtual void Impl_DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount) = 0;
 		virtual void Impl_SetLineWidth(float width) = 0;
+        virtual void Impl_LogError() = 0;
 
     private:
         static Kind s_APIKind;

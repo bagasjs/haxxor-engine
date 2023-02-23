@@ -19,5 +19,6 @@ namespace Haxxor
       void Impl_DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount);
       void Impl_DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount);
       void Impl_SetLineWidth(float width);
+      void Impl_LogError();
     };
 }

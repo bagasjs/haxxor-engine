@@ -10,6 +10,8 @@ public:
     void Init() override
     {
         m_WindowName = "My Window";
+        m_WindowWidth = 640;
+        m_WindowHeight = 480;
         RendererAPI::Set(RendererAPI::Kind::OPENGL);
     }
 

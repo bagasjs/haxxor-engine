@@ -36,4 +36,25 @@ namespace Haxxor
     {
         glLineWidth(width);
     }
+
+    void OpenGLRendererAPI::Impl_LogError()
+    {
+        int check = 1;
+        while (check)
+        {
+            const GLenum err = glGetError();
+            switch (err)
+            {
+                case GL_NO_ERROR: check = 0; break;
+                case 0x0500: HX_LOG_WARN("%s", "OpenGL Error detected: GL_INVALID_ENUM"); break;
+                case 0x0501: HX_LOG_WARN("%s", "OpenGL Error detected: GL_INVALID_VALUE"); break;
+                case 0x0502: HX_LOG_WARN("%s", "OpenGL Error detected: GL_INVALID_OPERATION"); break;
+                case 0x0503: HX_LOG_WARN("%s", "OpenGL Error detected: GL_STACK_OVERFLOW"); break;
+                case 0x0504: HX_LOG_WARN("%s", "OpenGL Error detected: GL_STACK_UNDERFLOW"); break;
+                case 0x0505: HX_LOG_WARN("%s", "OpenGL Error detected: GL_OUT_OF_MEMORY"); break;
+                case 0x0506: HX_LOG_WARN("%s", "OpenGL Error detected: GL_INVALID_FRAMEBUFFER_OPERATION"); break;
+                default: HX_LOG_WARN("%s:%i", "OpenGL Error detected: Unknown error code:", err); break;
+            }
+        }        
+    }
 }

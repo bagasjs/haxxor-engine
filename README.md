@@ -6,7 +6,10 @@ Status: On progress not ready for release yet
 - Clone the repository with recursive switch ``` git clone --recursive https://github.com/thankz4lot/haxxor-engine.git ```
 - Run ```premake5 <action>``` Look here for available [action](https://premake.github.io/docs/Using-Premake)
 
-### FUTURE WORK (Bug & Features)
-- Square sometimes doesn't render
+### FUTURE
 - Audio
 - Editor
+
+### Issues / Bugs
+- (fixed) Sometimes nothing is rendered.
+    cause: when OpenGLVertexArray object is initialized m_VertexBufferIndex is not initialized into 0 or any default value that cause glEnableVertexAttribArray() takes unknown value.

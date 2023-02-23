@@ -55,4 +55,9 @@ namespace Haxxor
     {
         s_Instance->Impl_SetLineWidth(width);
     }
+
+    void RendererAPI::LogError()
+    {
+        s_Instance->Impl_LogError();
+    }
 }
