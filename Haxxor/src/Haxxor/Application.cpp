@@ -1,27 +1,29 @@
 #include "Application.h"
-
 #include "Haxxor/Renderer/RendererAPI.h"
 
-
 namespace Haxxor {
-    void Application::Run() {
-        Init();
-
+    Application::Application(const std::string& name, uint32_t width, uint32_t height)
+    {
+        RendererAPI::Set(RendererAPI::Kind::OPENGL);
         RendererAPI::Init();
-        m_Window = Window::Create(m_WindowName, m_WindowWidth, m_WindowHeight);
+        m_Window = Window::Create(name, width, height);
         m_Renderer = Renderer::Create(m_Window);
+    }
 
-        Setup(m_Renderer);
-
+    void Application::Run() {
         while(!m_Window->ShouldClose()) {
             m_Window->PollEvents();
 
-            // Render here
-            Update(m_Renderer);
+            for(Ref<Layer> layer : m_Layers)
+                layer->OnUpdate();
 
             m_Window->SwapBuffers();
         }
+    }
 
-        Clean();
+    Application::~Application()
+    {
+        for(Ref<Layer> layer : m_Layers)
+            layer->OnDetach();
     }
 }

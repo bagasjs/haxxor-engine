@@ -3,19 +3,10 @@
 
 using namespace Haxxor;
 
-class MyGame : public Application {
+class GameLayer : public Layer
+{
 public:
-    virtual ~MyGame() {}
-
-    void Init() override
-    {
-        m_WindowName = "My Window";
-        m_WindowWidth = 640;
-        m_WindowHeight = 480;
-        RendererAPI::Set(RendererAPI::Kind::OPENGL);
-    }
-
-    void Setup(Ref<Renderer> renderer) override 
+    void OnAttach() override
     {
         m_VAO = VertexArray::Create();
         m_VAO->Enable();
@@ -46,7 +37,7 @@ public:
         m_VAO->SetIndexBuffer(m_IBO);
     }
 
-    void Update(Ref<Renderer> renderer) override
+    void OnUpdate() override
     {
         RendererAPI::Clear();
         m_Shader->Enable();
@@ -55,10 +46,6 @@ public:
         RendererAPI::DrawIndexed(m_VAO, m_IBO->GetCount());
     }
 
-    void Clean() override 
-    {
-
-    }
 private:
     Ref<VertexArray> m_VAO;
     Ref<VertexBuffer> m_VBO;
@@ -67,6 +54,7 @@ private:
 };
 
 int main(int argc, char** argv) {
-    Ref<Application> app = MakeRef<MyGame>();
-    app->Run();
+    Application app;
+    app.AddLayer<GameLayer>();
+    app.Run();
 }
