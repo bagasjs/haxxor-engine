@@ -31,7 +31,8 @@ namespace Haxxor {
         m_Data.Width = width;
         m_Data.Height = height;
 
-        if(s_GLFWWindowCount == 0) {
+        if(s_GLFWWindowCount == 0) 
+        {
             // TODO: add error checking or assertion
             glfwInit();
             glfwSetErrorCallback(GLFWErrorCallback);
@@ -50,25 +51,70 @@ namespace Haxxor {
 
         // TODO: remove this into graphic context class
         glfwMakeContextCurrent(m_Window);
+
+        glfwSetWindowUserPointer(m_Window, &m_Data);
+        SetVSync(true);
+        glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            data.Width = width;
+            data.Height = height;
+            data.Event.Type = EventType::WINDOW_RESIZED;
+        });
+
+        glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            data.Event.Type = EventType::WINDOW_CLOSE;
+        });
+
+        glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            if(key <= 0) data.Event.Key = KeyCode::KEY_UNKNOWN;
+            else data.Event.Key = (KeyCode) key;
+            switch (action)
+            {
+                case GLFW_PRESS:
+                    data.Event.Type = EventType::KEY_PRESSED;
+                    break;
+                case GLFW_RELEASE:
+                    data.Event.Type = EventType::KEY_RELEASED;
+                    break;
+                case GLFW_REPEAT:
+                    data.Event.Type = EventType::KEY_REPEATED;
+                    break;
+            }
+        });
+        
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
+		{
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            data.Event.Type = EventType::MOUSE_MOVED;
+            data.Event.MouseX = xPos;
+            data.Event.MouseY = yPos;
+		});
     }
 
-    void GlfwWindow::SwapBuffers() 
+    void GlfwWindow::SwapBuffers()
     {
         glfwSwapBuffers(m_Window);
     }
 
-    void GlfwWindow::PollEvents() 
+    Event GlfwWindow::PollEvent()
     {
+        m_Data.Event = Event();
         glfwPollEvents();
-    }
-
-    bool GlfwWindow::ShouldClose()
-    {
-        return glfwWindowShouldClose(m_Window);
+        return m_Data.Event;
     }
 
     void* GlfwWindow::GetNativeHandle()
     {
         return (void*) m_Window;
+    }
+    void GlfwWindow::SetVSync(bool enabled)
+    {
+        glfwSwapInterval(enabled ? 1 : 0);
+        m_Data.VSync = enabled;
     }
 }

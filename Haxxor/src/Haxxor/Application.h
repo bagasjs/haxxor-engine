@@ -10,6 +10,7 @@ namespace Haxxor {
     public:
         ~Layer() = default;
 
+        virtual void OnEvent(const Event& event) {}
         virtual void OnAttach() {}
         virtual void OnDetach() {}
         virtual void OnUpdate() {}
@@ -34,5 +35,6 @@ namespace Haxxor {
         Ref<Window> m_Window;
         Ref<Renderer> m_Renderer;
         std::vector<Ref<Layer>> m_Layers;
+        bool m_Running;
     };
 }

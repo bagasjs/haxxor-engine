@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Haxxor/Core/Common.h"
+#include "Haxxor/Core/Codes.h"
+#include "Haxxor/Core/Event.h"
 #include "Haxxor/Core/Window.h"
 #include "Haxxor/Core/Logging.h"
 
