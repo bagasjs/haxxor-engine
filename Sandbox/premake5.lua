@@ -7,7 +7,8 @@ project "Sandbox"
     includedirs {
 		"%{prj.location}/src",
 		"%{wks.location}/Haxxor/src",
-		"%{wks.location}/Haxxor/src/Haxxor"
+		"%{wks.location}/Haxxor/src/Haxxor",
+		"%{wks.location}/Haxxor/vendors/glm"
 	}
 
 	links {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Haxxor/Core/Common.h"
+#include "Haxxor/Core/Window.h"
 #include "Haxxor/Renderer/VertexArray.h"
 
 namespace Haxxor {
@@ -17,7 +18,7 @@ namespace Haxxor {
         virtual ~RendererAPI() = default;
 
     public:
-        static void Init();
+        static void Init(Ref<Window> window);
         static void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 		static void SetClearColor(float r, float g, float b, float a);
 		static void Clear();
@@ -30,6 +31,7 @@ namespace Haxxor {
         inline static void Set(Kind api) { s_APIKind = api; }
 
     protected:
+        virtual void Impl_Init(Ref<Window> window) = 0;
 		virtual void Impl_SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
 		virtual void Impl_SetClearColor(float r, float g, float b, float a) = 0;
 		virtual void Impl_Clear() = 0;

@@ -50,10 +50,10 @@ namespace Haxxor {
         ++s_GLFWWindowCount;
 
         // TODO: remove this into graphic context class
-        glfwMakeContextCurrent(m_Window);
+        // glfwMakeContextCurrent(m_Window);
 
         glfwSetWindowUserPointer(m_Window, &m_Data);
-        SetVSync(true);
+        
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
         {
             WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

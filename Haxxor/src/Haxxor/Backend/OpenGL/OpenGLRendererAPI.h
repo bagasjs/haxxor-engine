@@ -9,10 +9,10 @@ namespace Haxxor
     class HXAPI OpenGLRendererAPI : public RendererAPI
     {
     public:
-        OpenGLRendererAPI() = default;
         virtual ~OpenGLRendererAPI() = default;
 
     protected:
+      void Impl_Init(Ref<Window> window);
       void Impl_SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
       void Impl_SetClearColor(float r, float g, float b, float a);
       void Impl_Clear();

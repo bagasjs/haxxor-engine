@@ -1,10 +1,18 @@
 #include "OpenGLRendererAPI.h"
 
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "Haxxor/Core/Logging.h"
 
 namespace Haxxor
 {
+    void OpenGLRendererAPI::Impl_Init(Ref<Window> window)
+    {
+        GLFWwindow* glfwhandle = (GLFWwindow*) window->GetNativeHandle();
+        glfwMakeContextCurrent(glfwhandle);
+        gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);        
+    }
+
     void OpenGLRendererAPI::Impl_SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
     {
         glViewport(x, y, width, height);

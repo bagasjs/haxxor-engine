@@ -18,12 +18,11 @@ namespace Haxxor
         return nullptr;
     }
 
-    void RendererAPI::Init()
+    void RendererAPI::Init(Ref<Window> window)
     {
         if(s_Instance == nullptr)
             s_Instance = Create();
-        // TODO: Error handling
-        // TODO: Consider if user can use multi renderer api
+        s_Instance->Impl_Init(window);
     }
 
     void RendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)

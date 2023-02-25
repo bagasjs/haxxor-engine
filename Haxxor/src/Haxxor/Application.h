@@ -33,7 +33,6 @@ namespace Haxxor {
 
     private:
         Ref<Window> m_Window;
-        Ref<Renderer> m_Renderer;
         std::vector<Ref<Layer>> m_Layers;
         bool m_Running;
     };

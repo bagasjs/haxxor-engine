@@ -12,5 +12,6 @@
 #include "Haxxor/Renderer/IndexBuffer.h"
 #include "Haxxor/Renderer/VertexArray.h"
 #include "Haxxor/Renderer/Renderer.h"
+#include "Haxxor/Renderer/Camera.h"
 
 #include "Haxxor/Application.h"
