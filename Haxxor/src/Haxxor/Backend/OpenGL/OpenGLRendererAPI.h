@@ -13,12 +13,12 @@ namespace Haxxor
         virtual ~OpenGLRendererAPI() = default;
 
     protected:
-      void Impl_SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
-      void Impl_SetClearColor(float r, float g, float b, float a);
-      void Impl_Clear();
-      void Impl_DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount);
-      void Impl_DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount);
-      void Impl_SetLineWidth(float width);
-      void Impl_LogError();
+      void ImplSetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
+      void ImplSetClearColor(float r, float g, float b, float a);
+      void ImplClear();
+      void ImplDrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount);
+      void ImplDrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount);
+      void ImplSetLineWidth(float width);
+      void ImplLogError();
     };
 }

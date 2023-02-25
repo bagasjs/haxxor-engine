@@ -28,36 +28,36 @@ namespace Haxxor
 
     void RendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
     {
-        s_Instance->Impl_SetViewport(x, y, width, height);
+        s_Instance->ImplSetViewport(x, y, width, height);
     }
 
     void RendererAPI::SetClearColor(float r, float g, float b, float a)
     {
-        s_Instance->Impl_SetClearColor(r, g, b, a);
+        s_Instance->ImplSetClearColor(r, g, b, a);
     }
 
     void RendererAPI::Clear()
     {
-        s_Instance->Impl_Clear();
+        s_Instance->ImplClear();
     }
 
     void RendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0)
     {
-        s_Instance->Impl_DrawIndexed(vertexArray, indexCount);
+        s_Instance->ImplDrawIndexed(vertexArray, indexCount);
     }
 
     void RendererAPI::DrawLines(const Ref<VertexArray>& vertexArray, uint32_t vertexCount)
     {
-        s_Instance->Impl_DrawLines(vertexArray, vertexCount);
+        s_Instance->ImplDrawLines(vertexArray, vertexCount);
     }
 
     void RendererAPI::SetLineWidth(float width)
     {
-        s_Instance->Impl_SetLineWidth(width);
+        s_Instance->ImplSetLineWidth(width);
     }
 
     void RendererAPI::LogError()
     {
-        s_Instance->Impl_LogError();
+        s_Instance->ImplLogError();
     }
 }

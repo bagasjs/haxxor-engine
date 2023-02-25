@@ -2,27 +2,33 @@
 
 #include "Haxxor/Core/Common.h"
 #include "Haxxor/Core/Window.h"
+#include "Haxxor/Events/ApplicationEvent.h"
 #include "Haxxor/Renderer/Renderer.h"
+#include "Haxxor/Layer.h"
 
 namespace Haxxor {
     class HXAPI Application {
     public:
-        virtual ~Application() {};
+        Application();
+        virtual ~Application();
         void Run();
+        
+        Window& GetWindow() { return *m_Window; }
+        Renderer& GetRenderer() { return *m_Renderer; }
+        static Application& Get() { return *s_Instance; }
+        void OnEvent(Event& e);
+        void PushLayer(Layer* layer);
+        void PushOverlay(Layer* layer);
     
-    protected:
-        virtual void Init() {};
-        virtual void Setup(Ref<Renderer> renderer) {};
-        virtual void Update(Ref<Renderer> renderer) {};
-        virtual void Clean() {};
-
-    protected:
-        uint32_t m_WindowWidth = 1280;
-        uint32_t m_WindowHeight = 720;
-        std::string m_WindowName = "Haxxor Application";
+    private:
+        bool OnWindowClose(WindowCloseEvent& e);
+        bool OnWindowResize(WindowResizeEvent& e);
 
     private:
         Ref<Window> m_Window;
         Ref<Renderer> m_Renderer;
+        static Application* s_Instance;
+        LayerStack m_LayerStack;
+        bool m_Running;
     };
 }

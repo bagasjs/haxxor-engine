@@ -54,12 +54,18 @@
     #define HXAPI
 #endif
 
-
 #include <stdint.h>
+#include <iostream>
 #include <memory>
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <functional>
+#include <sstream>
+#include <algorithm>
+
+#define BIT(x) (1 << x)
+#define HX_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 
 namespace Haxxor {
     template<typename T>

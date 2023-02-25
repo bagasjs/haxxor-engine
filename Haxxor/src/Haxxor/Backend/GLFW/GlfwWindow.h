@@ -15,13 +15,17 @@ namespace Haxxor {
         void SwapBuffers() override;
         void PollEvents() override;
         bool ShouldClose() override;
+        void SetVSync(bool enable) override;
         
         void* GetNativeHandle() override;
+        void SetEventCallback(const EventCallbackFn& fn) override { m_Data.EventCallback = fn; }
     private:
         GLFWwindow* m_Window;
         struct WindowData {
             std::string Name;
             uint32_t Width, Height;
+            bool VSync;
+            EventCallbackFn EventCallback;
         };
         WindowData m_Data;
     };
