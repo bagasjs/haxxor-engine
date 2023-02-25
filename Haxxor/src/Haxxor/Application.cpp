@@ -20,6 +20,11 @@ namespace Haxxor {
         {
             Event event = m_Window->PollEvent();
             if(event.Type == EventType::WINDOW_CLOSE) m_Running = false;
+            if(event.Type == EventType::WINDOW_RESIZED)
+            {
+                HX_LOG_INFO("New window size is %u, %u", m_Window->GetWidth(), m_Window->GetHeight());
+                RendererAPI::SetViewport(0, 0, m_Window->GetWidth(), m_Window->GetHeight());
+            }
             for(Ref<Layer> layer : m_Layers)
             {
                 layer->OnEvent(event);

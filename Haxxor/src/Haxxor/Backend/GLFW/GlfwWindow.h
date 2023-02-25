@@ -22,6 +22,8 @@ namespace Haxxor {
         void SetVSync(bool enabled) override;
         inline bool IsVSync() override { return m_Data.VSync; };
         void* GetNativeHandle() override;
+        inline uint32_t GetWidth() override { return m_Data.Width; }
+        inline uint32_t GetHeight() override { return m_Data.Height; }
 
     private:
         GLFWwindow* m_Window;

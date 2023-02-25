@@ -12,6 +12,9 @@ namespace Haxxor {
         virtual void SwapBuffers() = 0;
         virtual Event PollEvent() = 0;
 
+        virtual uint32_t GetWidth() = 0;
+        virtual uint32_t GetHeight() = 0;
+
         virtual void* GetNativeHandle() = 0;
         virtual void SetVSync(bool enabled) = 0;
         virtual bool IsVSync() = 0;

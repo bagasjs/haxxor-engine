@@ -13,3 +13,4 @@ Status: On progress not ready for release yet
 ### Issues / Bugs
 - (fixed) Sometimes nothing is rendered.
     cause: when OpenGLVertexArray object is initialized m_VertexBufferIndex is not initialized into 0 or any default value that cause glEnableVertexAttribArray() takes unknown value.
+- Resize event cannot determine the change when window is maximized
