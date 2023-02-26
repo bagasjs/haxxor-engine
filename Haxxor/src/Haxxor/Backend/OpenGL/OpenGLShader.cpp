@@ -1,5 +1,6 @@
 #include "OpenGLShader.h"
 #include "Haxxor/Core/Logging.h"
+#include "Haxxor/Renderer/RendererAPI.h"
 
 #include <glad/glad.h>
 
@@ -71,6 +72,8 @@ namespace Haxxor {
             case Shader::DataType::INT2: glUniform2iv(location, 1, (int*)data); break;
             case Shader::DataType::INT3: glUniform3iv(location, 1, (int*)data); break;
             case Shader::DataType::INT4: glUniform4iv(location, 1, (int*)data); break;
+            case Shader::DataType::MAT3: glUniformMatrix3fv(location, 1, false, (float*)data); break;
+            case Shader::DataType::MAT4: glUniformMatrix4fv(location, 1, false, (float*)data); break;
         }
     }
 }

@@ -18,24 +18,14 @@ public:
         std::string fragsrc = LoadFileContent("res/shaders/basic.frag");
         m_Shader = Shader::Create(vertsrc, fragsrc);
         Ref<Camera> cam = Camera::Ortho(0.0f, 640.0f, 480.0f, 0.0f);
-        glm::mat4 mvp = cam->GetViewProjectionMatrix();
-        // m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(cam->GetViewProjectionMatrix()));
-
-        std::cout << glm::to_string(mvp) << std::endl;
+        m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(cam->GetViewProjectionMatrix()));
 
         float vertices[] = {
-            -0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-             0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-             0.5f,  0.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-            -0.5f,  0.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
+            100.5f, 100.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
+            200.5f, 100.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
+            200.5f, 200.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
+            100.5f, 200.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
         };
-
-        // float vertices[] = {
-        //     100.5f, 100.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-        //     200.5f, 100.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-        //     200.5f, 200.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-        //     100.5f, 200.5f, 0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-        // };
 
         m_VBO = VertexBuffer::Create(sizeof(vertices) / sizeof(float), vertices);
         m_VBO->Enable();
@@ -44,6 +34,7 @@ public:
             { Shader::DataType::FLOAT3, "a_Position" },
             { Shader::DataType::FLOAT4, "a_Color" },
         });
+
         m_VBO->SetLayout(layout);
         m_VAO->AddVertexBuffer(m_VBO);
 
@@ -59,7 +50,6 @@ public:
         m_IBO->Enable();
         m_VAO->Enable();
         RendererAPI::DrawIndexed(m_VAO, m_IBO->GetCount());
-        RendererAPI::LogError();
     }
 
 private:
