@@ -5,11 +5,13 @@
 
 namespace Haxxor
 {
-    class Camera
+    class HXAPI OrthographicCamera
     {
     public:
-        Camera(glm::mat4 projection);
-        ~Camera() = default;
+        OrthographicCamera(float left, float right, float bottom, float top);
+        ~OrthographicCamera() = default;
+
+        void SetProjection(float left, float right, float bottom, float top);
 
         const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
         const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
@@ -19,8 +21,6 @@ namespace Haxxor
         void SetRotation(float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
         glm::vec3 GetPosition() const { return m_Position; }
         void SetPosition(glm::vec3 pos) { m_Position = pos; RecalculateViewMatrix(); }
-
-        static Ref<Camera> Ortho(float left, float right, float bottom, float top);
 
     private:
         void RecalculateViewMatrix();

@@ -1,7 +1,8 @@
 #include "Application.h"
-#include "Haxxor/Renderer/RendererAPI.h"
 #include "Haxxor/Core/Event.h"
 #include "Haxxor/Core/Logging.h"
+#include "Haxxor/Renderer/RendererAPI.h"
+#include "Haxxor/Renderer/Renderer.h"
 
 namespace Haxxor {
     Application::Application(const std::string& name, uint32_t width, uint32_t height)
@@ -9,7 +10,7 @@ namespace Haxxor {
     {
         RendererAPI::Set(RendererAPI::Kind::OPENGL);
         m_Window = Window::Create(name, width, height);
-        RendererAPI::Init(m_Window);
+        Renderer::Init(m_Window);
         m_Window->SetVSync(true);
     }
 
@@ -22,7 +23,7 @@ namespace Haxxor {
             if(event.Type == EventType::WINDOW_CLOSE) 
                 m_Running = false;
             if(event.Type == EventType::WINDOW_RESIZED)
-                RendererAPI::SetViewport(0, 0, m_Window->GetWidth(), m_Window->GetHeight());
+                Renderer::OnWindowResize(m_Window->GetWidth(), m_Window->GetHeight());
 
             for(Ref<Layer> layer : m_Layers)
             {

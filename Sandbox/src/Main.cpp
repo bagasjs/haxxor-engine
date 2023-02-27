@@ -47,8 +47,8 @@ public:
         std::string vertsrc = LoadFileContent("res/shaders/basic.vert");
         std::string fragsrc = LoadFileContent("res/shaders/basic.frag");
         m_Shader = Shader::Create(vertsrc, fragsrc);
-        Ref<Camera> cam = Camera::Ortho(0.0f, 640.0f, 480.0f, 0.0f);
-        m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(cam->GetViewProjectionMatrix()));
+        m_Camera = MakeRef<OrthographicCamera>(0.0f, 640.0f, 480.0f, 0.0f);
+        m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(m_Camera->GetViewProjectionMatrix()));
 
         m_VBO = VertexBuffer::Create(m_MaximumVertices * sizeof(Vertex), nullptr);
         m_VBO->Enable();
@@ -110,6 +110,7 @@ private:
         m_Indices.clear();
         m_Vertices.clear();
     }
+    
 private:
     Rectangle m_Player;
     float m_PlayerSpeed = 10.0f;
@@ -118,6 +119,7 @@ private:
     Ref<VertexBuffer> m_VBO;
     Ref<IndexBuffer> m_IBO;
     Ref<Shader> m_Shader;
+    Ref<OrthographicCamera> m_Camera;
 
     std::vector<uint32_t> m_Indices;
     std::vector<Vertex> m_Vertices;
