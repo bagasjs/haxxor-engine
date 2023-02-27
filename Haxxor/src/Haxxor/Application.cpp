@@ -22,8 +22,6 @@ namespace Haxxor {
             Event event = m_Window->PollEvent();
             if(event.Type == EventType::WINDOW_CLOSE) 
                 m_Running = false;
-            if(event.Type == EventType::WINDOW_RESIZED)
-                Renderer::OnWindowResize(m_Window->GetWidth(), m_Window->GetHeight());
 
             for(Ref<Layer> layer : m_Layers)
             {

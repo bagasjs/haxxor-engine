@@ -4,15 +4,18 @@
 
 namespace Haxxor {
     Ref<Window> Renderer::s_Window = nullptr;
+    glm::vec2 Renderer::s_Viewport = glm::vec2(0.0f);
 
     void Renderer::Init(const Ref<Window>& window)
     {
         RendererAPI::Init(window);
         s_Window = window;
+        s_Viewport = glm::vec2(window->GetWidth(), window->GetHeight());
     }
 
-    void Renderer::OnWindowResize(uint32_t width, uint32_t height)
+    void Renderer::OnWindowResize()
     {
-        RendererAPI::SetViewport(0, 0, width, height);
+        s_Viewport = glm::vec2(s_Window->GetWidth(), s_Window->GetHeight());
+        RendererAPI::SetViewport(0, 0, s_Window->GetWidth(), s_Window->GetHeight());
     }
 }

@@ -26,6 +26,13 @@ public:
 
     void OnEvent(const Event& ev) override
     {
+        if(ev.Type == EventType::WINDOW_RESIZED)
+        {
+            Renderer::OnWindowResize();
+            glm::vec2 viewport = Renderer::GetViewport();
+            m_Camera->SetProjection(0.0f, viewport.x, viewport.y, 0.0f);
+        }
+
         if(ev.Type == EventType::KEY_PRESSED || ev.Type == EventType::KEY_REPEATED)
         {
             switch(ev.Key)
@@ -48,7 +55,6 @@ public:
         std::string fragsrc = LoadFileContent("res/shaders/basic.frag");
         m_Shader = Shader::Create(vertsrc, fragsrc);
         m_Camera = MakeRef<OrthographicCamera>(0.0f, 640.0f, 480.0f, 0.0f);
-        m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(m_Camera->GetViewProjectionMatrix()));
 
         m_VBO = VertexBuffer::Create(m_MaximumVertices * sizeof(Vertex), nullptr);
         m_VBO->Enable();
@@ -76,12 +82,15 @@ public:
         RendererAPI::Clear();
         Clear();
 
+
         // Draw Rectangle here
         DrawRectangle(m_Player, 0.2f, 0.3f, 1.0f, 1.0f);
         // End
 
         m_VBO->SetData(m_Vertices.size() * sizeof(Vertex) / sizeof(float), (float*) m_Vertices.data());
         m_IBO->SetData(m_Indices.size(), (uint32_t*) m_Indices.data());
+
+        m_Shader->SetUniform(Shader::DataType::MAT4, "u_Camera", glm::value_ptr(m_Camera->GetViewProjectionMatrix()));
 
         m_Shader->Enable();
         m_IBO->Enable();
