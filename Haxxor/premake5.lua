@@ -19,7 +19,8 @@ project "Haxxor"
 		"%{prj.location}/vendors/glad/include",
 		"%{prj.location}/vendors/glad/include/glad",
 		"%{prj.location}/vendors/glad/include/KHR",
-		"%{prj.location}/vendors/glm"
+		"%{prj.location}/vendors/glm",
+		"%{prj.location}/vendors/stb"
 	}
 
 	files {
