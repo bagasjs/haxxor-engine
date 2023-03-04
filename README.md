@@ -7,6 +7,10 @@ Status: On progress not ready for release yet
 - Run ```premake5 <action>``` Look here for available [action](https://premake.github.io/docs/Using-Premake)
 
 ### FUTURE
+##### TODO
+- Add "Context" class for graphic context initialization.
+
+##### Features
 - A better event system (key input support multiple keys)
 - Audio
 - Editor
