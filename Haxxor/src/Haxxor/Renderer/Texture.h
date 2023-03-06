@@ -22,7 +22,7 @@ namespace Haxxor
     class HXAPI Texture2D : public Texture 
     {
     public:
-        static Ref<Texture> Create(const std::string& filepath);
-        static Ref<Texture> Create(uint32_t width, uint32_t height, const uint8_t* data);
+        static Ref<Texture2D> Create(const std::string& filepath);
+        static Ref<Texture2D> Create(uint32_t width, uint32_t height, const uint8_t* data);
     };
 }

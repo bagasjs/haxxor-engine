@@ -8,6 +8,7 @@
 
 #include "Haxxor/Renderer/RendererAPI.h"
 #include "Haxxor/Renderer/Shader.h"
+#include "Haxxor/Renderer/Texture.h"
 #include "Haxxor/Renderer/VertexBuffer.h"
 #include "Haxxor/Renderer/IndexBuffer.h"
 #include "Haxxor/Renderer/VertexArray.h"

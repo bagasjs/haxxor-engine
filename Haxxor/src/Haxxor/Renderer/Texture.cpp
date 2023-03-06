@@ -6,7 +6,7 @@
 
 namespace Haxxor
 {
-    Ref<Texture> Texture2D::Create(const std::string& filepath)
+    Ref<Texture2D> Texture2D::Create(const std::string& filepath)
     {
         switch(RendererAPI::Get())
         {
@@ -16,7 +16,7 @@ namespace Haxxor
         return nullptr;
     }
 
-    Ref<Texture> Texture2D::Create(uint32_t width, uint32_t height, const uint8_t* data)
+    Ref<Texture2D> Texture2D::Create(uint32_t width, uint32_t height, const uint8_t* data)
     {
         switch(RendererAPI::Get())
         {
